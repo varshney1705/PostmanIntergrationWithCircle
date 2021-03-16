@@ -4,12 +4,15 @@ orbs:
   newman: postman/newman@0.0.2
 
 jobs:
+working_directory: /project
+    docker:
+      - image: circleci/node:10.16.3
   newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
       - checkout
       - run:
-          name: Insatll npm
+          name: Update NPM
           command: "sudo npm install -g npm@5"
           
       - newman/newman-run:
