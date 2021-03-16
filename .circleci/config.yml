@@ -6,9 +6,6 @@ jobs:
      executor: newman/postman-newman-docker
      steps:
       - checkout
-      - run:
-          name: Update NPM
-          command: "npm install -g newman"
        - run:
           name: Install Html extra
           command: "npm install -g newman-reporter-htmlextra"
