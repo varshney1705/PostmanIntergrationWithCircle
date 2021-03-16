@@ -6,9 +6,6 @@ orbs:
 jobs:
   newman-collection-run:
     executor: newman/postman-newman-docker
-    working_directory: /project
-    docker:
-      - image: circleci/node:10.16.3
     steps:
       - checkout
       - run:
