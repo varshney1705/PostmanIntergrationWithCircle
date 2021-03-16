@@ -8,10 +8,6 @@ jobs:
     executor: newman/postman-newman-docker
     steps:
       - checkout
-      - run:
-          name: Update NPM
-          command: "sudo npm install -g npm@5"
-          
       - newman/newman-run:
           collection: ./Test.postman_collection.json
           folder: ./ PostmanIntergrationWithCircle/newman/test.html
