@@ -2,34 +2,26 @@ version: 2.1
 orbs:
   newman: postman/newman@0.0.2
 jobs:
-  build:
+ newman-collection-run:
     executor: newman/postman-newman-docker
-    docker:
-      - image: circleci/node:10.16.3
     steps:
       - checkout
       - run:
           name: Update NPM
-          command: "sudo npm install -g npm@5"
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package-lock.json" }}
-          paths:
-            - ./node_modules
+          command: npm install -g newman
+       - run:
+          name: Install Html extra
+          command: npm install -g newman-reporter-htmlextra  
+          
       - newman/newman-run:
           collection: ./Test.postman_collection.json
-          additional-options: -r cli,junit
-      - run:
-          name: Generate Report
-          command: npm run report
+          folder: ./ PostmanIntergrationWithCircle/newman/test.html
+          additional-options: -r cli,junit,htmlextra
+     
       - store_artifacts:
           path: PostmanIntergrationWithCircle/newman
 workflows:
   version: 2
   Some Random Workflow:
     jobs:
-      - build
+      - newman-collection-run
