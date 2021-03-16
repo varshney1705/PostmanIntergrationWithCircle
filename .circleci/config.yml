@@ -23,5 +23,4 @@ jobs:
           name: Generate Report
           command: npm run report
       - store_artifacts:
-          path: PostmanIntergrationWithCircle
-/newman
+          path: PostmanIntergrationWithCircle/newman
