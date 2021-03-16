@@ -8,6 +8,10 @@ jobs:
     executor: newman/postman-newman-docker
     steps:
       - checkout
+      - run:
+          name: Insatll npm
+          command: "npm install -g newman"
+          
       - newman/newman-run:
           collection: ./Test.postman_collection.json
           folder: ./ PostmanIntergrationWithCircle/newman/test.html
