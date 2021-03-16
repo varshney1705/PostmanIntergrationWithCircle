@@ -1,8 +1,9 @@
 version: 2.1
+orbs:
+  newman: postman/newman@0.0.2
 jobs:
   build:
-    working_directory: /PostmanIntergrationWithCircle
-
+    executor: newman/postman-newman-docker
     docker:
       - image: circleci/node:10.16.3
     steps:
@@ -19,8 +20,16 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - newman/newman-run:
+          collection: ./Test.postman_collection.json
+          additional-options: -r cli,junit
       - run:
           name: Generate Report
           command: npm run report
       - store_artifacts:
           path: PostmanIntergrationWithCircle/newman
+workflows:
+  version: 2
+  Some Random Workflow:
+    jobs:
+      - build
