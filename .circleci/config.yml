@@ -10,7 +10,7 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: ./Test.postman_collection.json
-          additional-options: -r cli,junit,htmlextra
+          additional-options: -r cli,junit
 
 workflows:
   version: 2
