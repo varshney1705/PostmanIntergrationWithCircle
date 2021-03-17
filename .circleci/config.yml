@@ -10,7 +10,6 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: ./Test.postman_collection.json
-          folder: ./ PostmanIntergrationWithCircle/newman/test.html
           additional-options: -r cli,junit,htmlextra
 
 workflows:
