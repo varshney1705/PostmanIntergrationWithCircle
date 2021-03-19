@@ -19,7 +19,7 @@ jobs:
           command: |
             mkdir -p ~/test-results/newman
             cp ./newman/newman-run-report-*.xml ~/test-results/newman/
-      - store_test_Results:
+      - store_test_results:
           path: ~/test-results
       - store_artificates:
           path: ~/test-results/newman
