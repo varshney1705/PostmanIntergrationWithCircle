@@ -6,7 +6,7 @@ orbs:
 jobs:
   newman-collection-run:
     executor: newman/postman-newman-docker
-    executor: docker pull dannydainton/htmlextra
+    my-executor: docker pull dannydainton/htmlextra
     steps:
       - checkout
       - newman/newman-run:
