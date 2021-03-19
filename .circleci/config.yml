@@ -10,6 +10,9 @@ jobs:
       - checkout
       - run :
           name: Insatll npm
+          command: sudo npm install -g newman
+      - run :
+          name: Insatll html
           command: npm install -g newman-reporter-htmlextra
       - newman/newman-run:
           collection: ./Test.postman_collection.json
