@@ -8,9 +8,12 @@ jobs:
     executor: newman/postman-newman-docker
     steps:
       - checkout
+      - run :
+          name: Insatll npm
+          command: npm install -g newman-reporter-htmlextra
       - newman/newman-run:
           collection: ./Test.postman_collection.json
-          additional-options: -r cli,junit
+          additional-options: -r cli,htmlextra
       - run :
           name: Insatll Depenedices
           command: apk add --update ca-certificates openssl && update-ca-certificates
@@ -18,7 +21,7 @@ jobs:
           name: Save Results
           command: |
             mkdir -p ~/test-results/newman
-            cp ./newman/newman-run-report-*.xml ~/test-results/newman/
+            cp ./newman/newman-run-report-*.html ~/test-results/newman/
       - store_test_results:
           path: ~/test-results
       - store_artifacts:
