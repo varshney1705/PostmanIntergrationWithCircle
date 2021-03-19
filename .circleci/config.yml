@@ -6,14 +6,9 @@ orbs:
 jobs:
   newman-collection-run:
     executor: newman/postman-newman-docker
+    executor: docker pull dannydainton/htmlextra
     steps:
       - checkout
-      - run :
-          name: Insatll npm
-          command: npm install -g newman
-      - run :
-          name: Insatll html
-          command: npm install -g newman-reporter-htmlextra
       - newman/newman-run:
           collection: ./Test.postman_collection.json
           additional-options: -r cli,htmlextra
