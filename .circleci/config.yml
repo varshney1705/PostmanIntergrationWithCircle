@@ -23,8 +23,7 @@ jobs:
       - store_artifacts:
           path: ~/test-results/newman
      
-            
-          
+                    
 workflows:
   version: 2
   Some Random Workflow:
