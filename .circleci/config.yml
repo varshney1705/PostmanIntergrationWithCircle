@@ -13,17 +13,17 @@ jobs:
       - newman/newman-run:
           collection: ./Test.postman_collection.json
           additional-options: -r cli,htmlextra
-       - run :
+      - run :
           name: Insatll Depenedices
           command: apk add --update ca-certificates openssl && update-ca-certificates
-       - run :
+      - run :
           name: Save report
           command: |
             mkdir -p ~/test-results/newman
             cp ./newman/newman-run-report-*.xml ~/test-results/newman/
-        - store_test_Results:
+      - store_test_Results:
           path: ~/test-results
-        - store_artificates:
+      - store_artificates:
           path: ~/test-results/newman
      
             
