@@ -9,7 +9,7 @@ jobs:
       - checkout
       - newman/newman-run:
           collection: ./Test.postman_collection.json
-          additional-options: -r cli,htmlextra
+          additional-options: -r cli,junit
       - run:
           name: Insatll Depenedices
           command: apk add --update ca-certificates openssl && update-ca-certificates
