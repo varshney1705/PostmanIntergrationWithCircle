@@ -1,7 +1,4 @@
 version: 2.1
-executors:
-  my-executor: docker pull dannydainton/htmlextra
-  
 orbs:
   newman: postman/newman@0.0.2
   
